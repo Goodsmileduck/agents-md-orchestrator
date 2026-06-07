@@ -33,7 +33,9 @@ mistakes?"* If not, cut it.
 
 - Short, human-readable markdown; no required format. Headed sections
   (`# Code style`, `# Workflow`) work well.
-- `@path/to/file` imports compose files (e.g. shared core + tool extras).
+- `@path/to/file` imports compose files (e.g. shared core + tool extras) —
+  but they load eagerly every session, so they don't reduce context cost;
+  prefer plain-path pointers for reference material.
 - Locations: `~/.claude/CLAUDE.md` (global), `./CLAUDE.md` (shared, in git),
   `./CLAUDE.local.md` (personal, gitignored), parent/child dirs for monorepos
   (child files load on demand).

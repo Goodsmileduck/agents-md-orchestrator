@@ -5,15 +5,15 @@ description: Audit one project's CLAUDE.md/AGENTS.md against the best-practice d
 
 # Audit Memory File
 
-Per-project audit: compare against the digests, propose, apply on approval,
-log. NEVER write to the target project without showing the diff first.
+NEVER write to the target project without showing the diff first.
 
 ## Workflow
 
 1. **Safety check.** If the project is a git repo and its memory files have
    uncommitted changes, flag and skip unless told otherwise. Check the
-   project's scope in `SCOPES.md` for caution level and constraints
-   (`no-new-files` etc.).
+   project's scope in `SCOPES.md` for caution level, constraints
+   (`no-new-files` etc.), and the `Never touch` / fork-skip lists — skip
+   listed projects unless explicitly asked.
 2. **Read the yardstick**: `best-practices/claude-code.md` and
    `best-practices/codex.md`.
 3. **Read the target** memory file(s) and assess each line against the

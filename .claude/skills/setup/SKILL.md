@@ -20,7 +20,8 @@ edits config tables by hand. Discover first, ask second.
    ```
    Each direct child is classified: `scope` (≥2 git repos inside), `project`
    (a git repo itself), `scope?` (several children, no repos), `?` (unclear).
-   Counts of children/repos/memory-files show what would be managed.
+   Counts of children/repos/memory-files (plus root git/memory-file flags)
+   show what would be managed.
 4. **Interview per candidate** — keep it short, multiple-choice, with
    defaults pre-filled from heuristics:
    - Include this folder? (default: yes for `scope`, ask for `?`)

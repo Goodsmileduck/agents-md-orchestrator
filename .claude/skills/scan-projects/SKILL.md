@@ -25,7 +25,8 @@ columns (Last audit, Notes) and the Experiments table.
 4. **Apply scope annotations from SCOPES.md**: caution labels in scope
    headings (e.g. `## work/ (high caution)`), and for scopes marked "single
    project at scope root", replace the per-subdir rows with one row for the
-   scope itself.
+   scope itself. Drop rows matching the `Never touch` list; keep rows for
+   known forks but mark them `fork — skip` in Notes so audits pass over them.
 5. **Write PROJECTS.md** with today's date in the `Scanned:` line, and report
    a short delta summary (new / removed / state-changed projects).
 

@@ -22,8 +22,7 @@ practices.
 
 Single source of truth per project: `AGENTS.md` (regular file), with
 `CLAUDE.md` as a symlink to it. Both tools read the same content; no drift.
-Migrate CLAUDE.md-only projects during audits:
-`git mv CLAUDE.md AGENTS.md && ln -s AGENTS.md CLAUDE.md` (plain `mv` outside git).
+The audit and seed skills handle migration and creation.
 
 ## Audit workflow
 
@@ -48,19 +47,11 @@ first. Log every audit date and outcome in PROJECTS.md.
   memory files load automatically for subdirectory sessions.
 - Skip forks of upstream projects unless asked.
 
-## Restructuring oversized memory files
-
-When a memory file is far over length guidance, relocate — don't delete:
-always-needed rules stay in the memory file; reference material moves to
-`docs/*.md` with plain-path pointers (NOT `@imports`, which load eagerly and
-defeat the purpose); dated reports get a snapshot filename (`audit-YYYY-MM.md`).
-
 ## Digest refresh
 
-Use the `refresh-best-practices` skill (`.claude/skills/refresh-best-practices/`)
-to check the official docs for changes and update the digests on approval.
-Run it when asked, or when digests are more than a month old before a large
-audit.
+Use the `refresh-best-practices` skill to check the official docs for changes
+and update the digests on approval. Run it when asked, or when digests are
+more than a month old before a large audit.
 
 ## Out of scope
 

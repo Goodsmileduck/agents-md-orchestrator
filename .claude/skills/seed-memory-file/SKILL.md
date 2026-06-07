@@ -13,7 +13,8 @@ repo, not from speculation.
 
 1. **Safety check.** Check the project's scope in `SCOPES.md`: in
    `no-new-files` scopes do NOT create files inside the repo — propose adding
-   a section to the scope-root memory file instead.
+   a section to the scope-root memory file instead. Skip projects on the
+   `Never touch` / fork-skip lists unless explicitly asked.
 2. **Explore the project** (keep it cheap — README, manifests, CI config,
    Makefile/justfile, top-level layout):
    - How to build, test, lint, run — exact commands
