@@ -20,6 +20,8 @@ columns (Last audit, Notes) and the Experiments table.
    state and git presence, with `never`/empty in the Last-audit/Notes columns.
 3. **Merge with the existing PROJECTS.md** (if any): carry over each project's
    `Last audit` and `Notes` values and the entire `## Experiments` section.
+   Exception: any `other:` token in Notes reflects current disk state — keep
+   the freshly scanned one, appended to the carried-over human note.
    New projects keep `never`/empty. Projects that vanished from disk: drop the
    row but mention the removal to the user.
 4. **Apply scope annotations from SCOPES.md**: caution labels in scope
@@ -36,3 +38,9 @@ columns (Last audit, Notes) and the Experiments table.
   recurse below one level — projects are direct children of a scope.
 - A `(root)` row is emitted when the scope folder itself has memory files
   (e.g. a work scope with one shared root CLAUDE.md).
+- **Cross-tool drift**: the script flags other agent-config files
+  (`GEMINI.md`, copilot-instructions, etc. — see its `OTHER_FILES` list) as
+  `other:` in Notes. Those tools read their own file first, silently
+  overriding the shared AGENTS.md; the audit skill checks flagged files for
+  contradictions (Gemini CLI can be pointed at AGENTS.md via
+  `context.fileName` instead — useful in no-new-files scopes).
