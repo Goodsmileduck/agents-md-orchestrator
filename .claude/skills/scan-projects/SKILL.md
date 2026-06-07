@@ -10,8 +10,9 @@ columns (Last audit, Notes) and the Experiments table.
 
 ## Workflow
 
-1. **Read `SCOPES.md`** for the scope list. If it doesn't exist, stop and ask
-   the user to create it from `SCOPES.example.md`.
+1. **Read `SCOPES.md`** for the scope list. If it doesn't exist, run the
+   `setup` workflow first so the user gets an interactive first-run path
+   instead of hand-editing tables.
 2. **Run the scan script** with all scope paths:
    ```bash
    .claude/skills/scan-projects/scripts/scan.sh <base>/<scope1> <base>/<scope2> ...
