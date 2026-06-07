@@ -23,7 +23,8 @@ NEVER write to the target project without showing the diff first.
    - **Relocate** — reference material, per-subproject detail, dated reports
      → move to the project's `docs/*.md` with plain-path pointers
      (NOT `@imports` — they load eagerly and defeat the purpose; the only
-     sanctioned import is a one-line `@AGENTS.md` root shim)
+     sanctioned import is the one-line `@AGENTS.md` bridge shim used where
+     symlinks are unreliable)
    - **Cut** — generic advice, things inferable from code, stale info
    - **Rewrite** — rules at the wrong altitude: brittle step-by-step logic
      trees → strong heuristics
@@ -36,16 +37,17 @@ NEVER write to the target project without showing the diff first.
    package.json/Makefile/etc. Flag stale claims for Cut or fix. If the
    inventory row carries an `other:` flag (GEMINI.md,
    copilot-instructions.md, …), skim those files for contradictions with
-   AGENTS.md and propose consolidating them into it. If the user reports a
+   the memory file and propose consolidating them into it. If the user reports a
    rule being ignored, first confirm the file loads at all (`/memory` lists
    loaded instruction files) before diagnosing length.
 5. **Structural fixes** to include in the proposal when applicable:
-   - **Bridge migration**: target state is `AGENTS.md` (file) +
-     `CLAUDE.md → AGENTS.md` (symlink). Migrate:
-     `git mv CLAUDE.md AGENTS.md && ln -s AGENTS.md CLAUDE.md`
-     (plain `mv` outside git). Where symlinks are unreliable (Windows) or
-     Claude-only rules are needed, use a `CLAUDE.md` containing `@AGENTS.md`
-     instead. Stage but never commit.
+   - **Bridge migration**: target state is `CLAUDE.md` (file) +
+     `AGENTS.md → CLAUDE.md` (symlink). Migrate:
+     `git mv AGENTS.md CLAUDE.md && ln -s CLAUDE.md AGENTS.md`
+     (plain `mv` outside git). Where symlinks are unreliable (Windows),
+     reverse the pair: keep `AGENTS.md` as the file with a `CLAUDE.md`
+     containing `@AGENTS.md` — Codex cannot import, so AGENTS.md must hold
+     the real content there. Stage but never commit.
    - **Oversized file**: relocate, don't delete — always-needed rules stay;
      file-type/subtree-specific rules → `.claude/rules/*.md` with `paths:`
      frontmatter (load only when matching files are touched); reference

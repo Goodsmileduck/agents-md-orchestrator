@@ -13,7 +13,7 @@ date-stamped best-practice digests as the yardstick.
 ## How it works
 
 Open this folder in Claude Code or Codex. The orchestrator instructions
-(`AGENTS.md`) drive a propose-then-approve workflow:
+(`CLAUDE.md`) drive a propose-then-approve workflow:
 
 1. **Scan** your managed folders for projects and their memory files
 2. **Compare** each against the digests in `best-practices/`
@@ -40,7 +40,7 @@ Prefer manual config? Copy `SCOPES.example.md` to `SCOPES.md` and fill it in.
 
 | File | Purpose |
 |---|---|
-| `AGENTS.md` (+ `CLAUDE.md` symlink) | Orchestrator instructions: workflow, safety rules |
+| `CLAUDE.md` (+ `AGENTS.md` symlink) | Orchestrator instructions: workflow, safety rules |
 | `best-practices/claude-code.md` | Digest of the official Claude Code guidance |
 | `best-practices/codex.md` | Digest of the official Codex AGENTS.md guidance |
 | `SCOPES.example.md` | Template for your managed-folder config |
@@ -48,18 +48,18 @@ Prefer manual config? Copy `SCOPES.example.md` to `SCOPES.md` and fill it in.
 | `.claude/skills/setup/` | Workflow spec: interactive first-run setup — discover folders, build your config |
 | `.claude/skills/scan-projects/` | Workflow spec: regenerate the inventory from your scopes (bundled scan script) |
 | `.claude/skills/audit-memory-file/` | Workflow spec: per-project audit — score, propose diff, apply, log |
-| `.claude/skills/seed-memory-file/` | Workflow spec: bootstrap a minimal AGENTS.md for projects that have none |
+| `.claude/skills/seed-memory-file/` | Workflow spec: bootstrap a minimal CLAUDE.md for projects that have none |
 | `.claude/skills/refresh-best-practices/` | Workflow spec: check the official docs for changes and update the digests |
 | `.agents/skills` (symlink) | Lets Codex load the same skills natively |
 
 Claude Code loads `.claude/skills/*` as skills; Codex loads the same files
-through the `.agents/skills` symlink. `AGENTS.md` also routes each workflow
+through the `.agents/skills` symlink. `CLAUDE.md` also routes each workflow
 to its `SKILL.md` path as a fallback, so one set of workflow specs stays the
 source of truth for both tools.
 
 ## Opinions baked in
 
-- **One source of truth per project:** `AGENTS.md` as the file, `CLAUDE.md`
+- **One source of truth per project:** `CLAUDE.md` as the file, `AGENTS.md`
   as a symlink to it — Claude Code and Codex read the same content, no drift.
 - **Propose-then-approve, always.** The orchestrator never edits another
   project silently.

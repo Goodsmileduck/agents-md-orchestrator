@@ -42,6 +42,6 @@ columns (Last audit, Notes) and the Experiments table.
 - **Cross-tool drift**: the script flags other agent-config files
   (`GEMINI.md`, copilot-instructions, etc. — see its `OTHER_FILES` list) as
   `other:` in Notes. Those tools read their own file first, silently
-  overriding the shared AGENTS.md; the audit skill checks flagged files for
-  contradictions (Gemini CLI can be pointed at AGENTS.md via
+  overriding the shared memory file; the audit skill checks flagged files for
+  contradictions (Gemini CLI can be pointed at the shared file via
   `context.fileName` instead — useful in no-new-files scopes).
