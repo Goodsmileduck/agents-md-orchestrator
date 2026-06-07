@@ -2,7 +2,8 @@
 
 Audit, prune, and sync your `CLAUDE.md` / `AGENTS.md` files across all your
 projects — propose-then-approve, with best-practice digests as the yardstick.
-Works with [Claude Code](https://code.claude.com) and Codex.
+Works with [Claude Code](https://code.claude.com) and
+[Codex](https://developers.openai.com/codex).
 
 Memory files rot: best practices shift, files bloat until the model ignores
 them, and every project drifts in its own direction. This orchestrator gives you one
