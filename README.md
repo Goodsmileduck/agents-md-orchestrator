@@ -23,8 +23,8 @@ drive a propose-then-approve workflow:
 ## Setup
 
 ```bash
-git clone https://github.com/<you>/globalO
-cd globalO
+git clone https://github.com/Goodsmileduck/agents-md-orchestrator
+cd agents-md-orchestrator
 cp SCOPES.example.md SCOPES.md   # fill in your project folders
 claude                            # then: "run an audit"
 ```
