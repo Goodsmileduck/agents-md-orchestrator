@@ -7,8 +7,8 @@ practices.
 ## Local configuration (gitignored — create from examples on first run)
 
 - `SCOPES.md` — which folders you manage, their caution levels, and
-  scope-specific constraints. If missing, copy `SCOPES.example.md` and ask the
-  user to fill it in before doing anything else.
+  scope-specific constraints. If missing, run the `setup` skill to create it
+  interactively before doing anything else.
 - `PROJECTS.md` — inventory of managed projects, memory-file status, audit
   log, and active per-project experiments. Generate it via the scan step if
   missing (see `PROJECTS.example.md` for the format). Keep it current.

@@ -26,13 +26,13 @@ drive a propose-then-approve workflow:
 ```bash
 git clone https://github.com/Goodsmileduck/agents-md-orchestrator
 cd agents-md-orchestrator
-cp SCOPES.example.md SCOPES.md   # fill in your project folders
-claude                            # then: "run an audit"
+claude   # then: "set me up" — interactive setup builds your config
 ```
 
-`SCOPES.md` (your folder list) and `PROJECTS.md` (your inventory) are
-gitignored — your project names stay private. The orchestrator generates
-`PROJECTS.md` on first scan.
+Setup discovers your project folders, asks a few questions (caution levels,
+folders to skip), and writes `SCOPES.md` (your folder list) and `PROJECTS.md`
+(your inventory). Both are gitignored — your project names stay private.
+Prefer manual config? Copy `SCOPES.example.md` to `SCOPES.md` and fill it in.
 
 ## What's in the box
 
@@ -43,6 +43,7 @@ gitignored — your project names stay private. The orchestrator generates
 | `best-practices/codex.md` | Digest of the official Codex AGENTS.md guidance |
 | `SCOPES.example.md` | Template for your managed-folder config |
 | `PROJECTS.example.md` | Inventory format reference |
+| `.claude/skills/setup/` | Skill: interactive first-run setup — discover folders, build your config |
 | `.claude/skills/scan-projects/` | Skill: regenerate the inventory from your scopes (bundled scan script) |
 | `.claude/skills/audit-memory-file/` | Skill: per-project audit — score, propose diff, apply, log |
 | `.claude/skills/seed-memory-file/` | Skill: bootstrap a minimal AGENTS.md for projects that have none |
