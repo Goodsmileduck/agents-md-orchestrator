@@ -20,9 +20,10 @@ practices.
 
 ## File policy
 
-Single source of truth per project: `AGENTS.md` (regular file), with
-`CLAUDE.md` as a symlink to it. Both tools read the same content; no drift.
-The audit and seed skills handle migration and creation.
+Single source of truth per project: `AGENTS.md` (regular file), bridged to
+`CLAUDE.md` (symlink, or `@AGENTS.md` import where symlinks are unreliable).
+Both tools read the same content; no drift. The audit and seed skills handle
+migration and creation.
 
 ## Audit workflow
 

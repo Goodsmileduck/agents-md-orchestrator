@@ -1,6 +1,7 @@
 # Codex — AGENTS.md Best Practices (digest)
 
-Source: https://developers.openai.com/codex/learn/best-practices
+Sources: https://developers.openai.com/codex/learn/best-practices,
+https://developers.openai.com/codex/guides/agents-md
 Last refreshed: 2026-06-07
 
 ## Core principle
@@ -11,12 +12,23 @@ repeatedly — evidence-based growth, not speculative rules.
 
 ## Essential sections
 
-- Repository layout and important directories
+- Repository layout and important directories (only where non-obvious — a
+  layout `ls` already reveals earns no lines)
 - How to run the project
 - Build, test, and lint commands
 - Engineering conventions and PR expectations
-- Constraints and do-not rules
+- Constraints — strongest pattern (GitHub's 2,500-repo analysis): a three-tier
+  **Always / Ask-first / Never** block, not one flat do-not list. Always:
+  read, single-file lint/typecheck/test. Ask-first: installs, commits/pushes,
+  deletes, full builds. Never: secrets, force-push main.
 - Definition of "done" and how to verify it
+
+## Size limits
+
+Codex caps combined AGENTS.md content at **32 KiB** (`project_doc_max_bytes`),
+concatenating root-to-leaf and **silently dropping** whatever exceeds the cap.
+Treat 32 KiB total as a hard audit threshold; fix by shrinking or raising the
+limit in `config.toml`.
 
 ## Hierarchy
 
@@ -46,5 +58,7 @@ repeatedly — evidence-based growth, not speculative rules.
 ## Convergence with Claude Code
 
 Both tools agree: short, concrete, command-rich, evidence-grown files.
-This is why a single shared `AGENTS.md` (with `CLAUDE.md` symlinked to it)
-works — the content guidance is nearly identical.
+AGENTS.md is now a Linux Foundation–governed standard read natively by 20+
+tools — a single shared `AGENTS.md` (bridged to `CLAUDE.md` via symlink or
+`@AGENTS.md` import) is the standards-aligned setup; the content guidance is
+nearly identical.

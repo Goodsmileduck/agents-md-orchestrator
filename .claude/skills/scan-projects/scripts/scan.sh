@@ -11,6 +11,16 @@ state() {
   else echo "—"; fi
 }
 
+# Other agent-config files that silently override AGENTS.md for their tool.
+OTHER_FILES="GEMINI.md .github/copilot-instructions.md .cursorrules .windsurfrules"
+others() {  # sets OTHERS for dir "$1" (no subshell — called per project dir)
+  local f; OTHERS=""
+  for f in $OTHER_FILES; do
+    [ -e "$1$f" ] && OTHERS="${OTHERS:+$OTHERS, }${f##*/}"
+  done
+  OTHERS="${OTHERS:+other: $OTHERS}"
+}
+
 for base in "$@"; do
   [ -d "$base" ] || { echo "WARN: $base not found" >&2; continue; }
   echo "## $(basename "$base")/"
@@ -20,7 +30,8 @@ for base in "$@"; do
   c=$(state "$base/CLAUDE.md"); a=$(state "$base/AGENTS.md")
   if [ "$c" != "—" ] || [ "$a" != "—" ]; then
     g=$([ -d "$base/.git" ] && echo yes || echo no)
-    echo "| (root) | $c | $a | $g | never | |"
+    others "$base/"
+    echo "| (root) | $c | $a | $g | never | $OTHERS |"
   fi
   for d in "$base"/*/; do
     [ -d "$d" ] || continue
@@ -28,7 +39,8 @@ for base in "$@"; do
     case "$name" in node_modules|.git|.claude) continue ;; esac
     c=$(state "${d}CLAUDE.md"); a=$(state "${d}AGENTS.md")
     g=$([ -d "${d}.git" ] && echo yes || echo no)
-    echo "| $name | $c | $a | $g | never | |"
+    others "$d"
+    echo "| $name | $c | $a | $g | never | $OTHERS |"
   done
   echo
 done

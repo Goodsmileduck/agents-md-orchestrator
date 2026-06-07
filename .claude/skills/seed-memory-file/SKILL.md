@@ -1,6 +1,6 @@
 ---
 name: seed-memory-file
-description: Bootstrap a minimal AGENTS.md (with CLAUDE.md symlink) for a project that has no memory file yet, by exploring the codebase for commands, structure, and conventions. Use when the user asks to seed, bootstrap, init, or create a memory file / AGENTS.md / CLAUDE.md for a project, or for inventory rows where both files are absent.
+description: Bootstrap a minimal AGENTS.md (with CLAUDE.md bridge) for a project that has no memory file yet, by exploring the codebase for commands, structure, and conventions. Use when the user asks to seed, bootstrap, init, or create a memory file / AGENTS.md / CLAUDE.md for a project, or for inventory rows where both files are absent.
 ---
 
 # Seed Memory File
@@ -25,12 +25,17 @@ repo, not from speculation.
    - `## Commands` — build/test/lint/run with inline comments
    - `## Structure` — only if the layout is non-obvious; a few key dirs max
    - `## Rules` — only constraints with evidence (e.g. CI enforces a
-     formatter, a dir is generated code)
+     formatter, a dir is generated code). Where the project warrants real
+     boundaries (deploys, destructive scripts, high-caution scope), use the
+     three-tier **Always / Ask first / Never** form from the codex digest
+     rather than one flat do-not list
    - Omit any section with nothing non-obvious to say. Never include generic
      advice, file-by-file descriptions, or restated language defaults.
 4. **Propose** the draft. Wait for approval.
-5. **Create on approval**: write `AGENTS.md`, then
-   `ln -s AGENTS.md CLAUDE.md`. In git repos, stage both but never commit.
+5. **Create on approval**: write `AGENTS.md`, then bridge:
+   `ln -s AGENTS.md CLAUDE.md`, or a one-line `CLAUDE.md` containing
+   `@AGENTS.md` where symlinks are unreliable (e.g. Windows). In git repos,
+   stage both but never commit.
 6. **Log** in PROJECTS.md: state columns to `link`/`file`, `Last audit` to
    today, note "seeded".
 

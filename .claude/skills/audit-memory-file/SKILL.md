@@ -22,23 +22,44 @@ NEVER write to the target project without showing the diff first.
    - **Keep** — commands, project-specific rules, gotchas, env quirks
    - **Relocate** — reference material, per-subproject detail, dated reports
      → move to the project's `docs/*.md` with plain-path pointers
-     (NOT `@imports` — they load eagerly and defeat the purpose)
+     (NOT `@imports` — they load eagerly and defeat the purpose; the only
+     sanctioned import is a one-line `@AGENTS.md` root shim)
    - **Cut** — generic advice, things inferable from code, stale info
+   - **Rewrite** — rules at the wrong altitude: brittle step-by-step logic
+     trees → strong heuristics
    - **Missing** — no build/test/lint commands, no verification step
-4. **Structural fixes** to include in the proposal when applicable:
-   - **Symlink migration**: target state is `AGENTS.md` (file) +
+   Flag breaches of the hard size limits stated in the digests (Claude
+   line ceiling, Codex byte cap).
+4. **Verify claims against the repo** (cheap, catches rot the yardstick
+   can't): every path the file mentions exists; every referenced command
+   (`npm run X`, make/just targets) is actually defined in
+   package.json/Makefile/etc. Flag stale claims for Cut or fix. If the
+   inventory row carries an `other:` flag (GEMINI.md,
+   copilot-instructions.md, …), skim those files for contradictions with
+   AGENTS.md and propose consolidating them into it. If the user reports a
+   rule being ignored, first confirm the file loads at all (`/memory` lists
+   loaded instruction files) before diagnosing length.
+5. **Structural fixes** to include in the proposal when applicable:
+   - **Bridge migration**: target state is `AGENTS.md` (file) +
      `CLAUDE.md → AGENTS.md` (symlink). Migrate:
      `git mv CLAUDE.md AGENTS.md && ln -s AGENTS.md CLAUDE.md`
-     (plain `mv` outside git). Stage but never commit.
+     (plain `mv` outside git). Where symlinks are unreliable (Windows) or
+     Claude-only rules are needed, use a `CLAUDE.md` containing `@AGENTS.md`
+     instead. Stage but never commit.
    - **Oversized file**: relocate, don't delete — always-needed rules stay;
-     reference material → `docs/`; dated reports → `docs/<topic>-YYYY-MM.md`
+     file-type/subtree-specific rules → `.claude/rules/*.md` with `paths:`
+     frontmatter (load only when matching files are touched); reference
+     material → `docs/`; dated reports → `docs/<topic>-YYYY-MM.md`
      snapshots. In `no-new-files` scopes, relocated content goes to the
      scope-root `docs/` instead of inside the repo.
-5. **Propose** the full diff and a one-line score summary
-   (structure / conciseness / specificity / completeness). Wait for approval.
-6. **Apply** only what was approved.
-7. **Log** in PROJECTS.md: set `Last audit` to today, update the
-   CLAUDE.md/AGENTS.md state columns, add a short note for anything notable.
+6. **Propose** the full diff and a one-line score summary
+   (structure / conciseness / specificity / altitude / completeness /
+   staleness). Wait for approval.
+7. **Apply** only what was approved. Optionally stamp provenance as a
+   zero-cost HTML comment (`<!-- audited YYYY-MM-DD by agents-md-orchestrator -->`).
+8. **Log** in PROJECTS.md: set `Last audit` to today, update the
+   CLAUDE.md/AGENTS.md state columns, add a short note for anything notable
+   (including stale claims found in step 4).
 
 ## Score quickly, don't ceremonialize
 

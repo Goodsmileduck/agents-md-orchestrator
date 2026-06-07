@@ -13,8 +13,10 @@ enforce outdated guidance.
 
 | Live doc | Local digest |
 |---|---|
+| https://code.claude.com/docs/en/memory (primary) | `best-practices/claude-code.md` |
 | https://code.claude.com/docs/en/best-practices | `best-practices/claude-code.md` |
 | https://developers.openai.com/codex/learn/best-practices | `best-practices/codex.md` |
+| https://developers.openai.com/codex/guides/agents-md | `best-practices/codex.md` |
 
 ## Workflow
 
