@@ -27,12 +27,13 @@ Migrate CLAUDE.md-only projects during audits:
 
 ## Audit workflow
 
-1. **Scan** managed scopes (from `SCOPES.md`); refresh PROJECTS.md tables.
-2. **Compare** each memory file against the digests in `best-practices/`.
-3. **Propose** a diff per project. NEVER write to another project without
-   showing the diff and getting approval first.
-4. **Apply** approved diffs only.
-5. **Log** the audit date and outcome in PROJECTS.md.
+1. **Scan** managed scopes — use the `scan-projects` skill.
+2. **Audit** each project's memory file — use the `audit-memory-file` skill
+   (compare against digests, propose diff, apply on approval, log).
+3. **Seed** projects with no memory file — use the `seed-memory-file` skill.
+
+NEVER write to another project without showing the diff and getting approval
+first. Log every audit date and outcome in PROJECTS.md.
 
 ## Safety rules
 

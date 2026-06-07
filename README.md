@@ -43,6 +43,9 @@ gitignored — your project names stay private. The orchestrator generates
 | `best-practices/codex.md` | Digest of the official Codex AGENTS.md guidance |
 | `SCOPES.example.md` | Template for your managed-folder config |
 | `PROJECTS.example.md` | Inventory format reference |
+| `.claude/skills/scan-projects/` | Skill: regenerate the inventory from your scopes (bundled scan script) |
+| `.claude/skills/audit-memory-file/` | Skill: per-project audit — score, propose diff, apply, log |
+| `.claude/skills/seed-memory-file/` | Skill: bootstrap a minimal AGENTS.md for projects that have none |
 | `.claude/skills/refresh-best-practices/` | Skill: check the official docs for changes and update the digests |
 
 ## Opinions baked in
