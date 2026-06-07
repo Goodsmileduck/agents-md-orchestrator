@@ -1,11 +1,11 @@
-# globalO — Memory-File Orchestrator
+# agents-md-orchestrator
 
 A meta-project for [Claude Code](https://code.claude.com) (and Codex) that
 audits and maintains the `CLAUDE.md` / `AGENTS.md` memory files across all
 your other projects, keeping them aligned with current best practices.
 
 Memory files rot: best practices shift, files bloat until the model ignores
-them, and every project drifts in its own direction. globalO gives you one
+them, and every project drifts in its own direction. This orchestrator gives you one
 place to scan, audit, and fix them — with an inventory, an audit log, and
 date-stamped best-practice digests as the yardstick.
 
