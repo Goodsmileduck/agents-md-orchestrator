@@ -12,8 +12,8 @@ date-stamped best-practice digests as the yardstick.
 
 ## How it works
 
-Open this folder in Claude Code. The orchestrator instructions (`AGENTS.md`)
-drive a propose-then-approve workflow:
+Open this folder in Claude Code or Codex. The orchestrator instructions
+(`AGENTS.md`) drive a propose-then-approve workflow:
 
 1. **Scan** your managed folders for projects and their memory files
 2. **Compare** each against the digests in `best-practices/`
@@ -26,7 +26,9 @@ drive a propose-then-approve workflow:
 ```bash
 git clone https://github.com/Goodsmileduck/agents-md-orchestrator
 cd agents-md-orchestrator
-claude   # then: "set me up" — interactive setup builds your config
+claude   # then: "set me up"
+# or
+codex    # then: "set me up"
 ```
 
 Setup discovers your project folders, asks a few questions (caution levels,
@@ -43,11 +45,17 @@ Prefer manual config? Copy `SCOPES.example.md` to `SCOPES.md` and fill it in.
 | `best-practices/codex.md` | Digest of the official Codex AGENTS.md guidance |
 | `SCOPES.example.md` | Template for your managed-folder config |
 | `PROJECTS.example.md` | Inventory format reference |
-| `.claude/skills/setup/` | Skill: interactive first-run setup — discover folders, build your config |
-| `.claude/skills/scan-projects/` | Skill: regenerate the inventory from your scopes (bundled scan script) |
-| `.claude/skills/audit-memory-file/` | Skill: per-project audit — score, propose diff, apply, log |
-| `.claude/skills/seed-memory-file/` | Skill: bootstrap a minimal AGENTS.md for projects that have none |
-| `.claude/skills/refresh-best-practices/` | Skill: check the official docs for changes and update the digests |
+| `.claude/skills/setup/` | Workflow spec: interactive first-run setup — discover folders, build your config |
+| `.claude/skills/scan-projects/` | Workflow spec: regenerate the inventory from your scopes (bundled scan script) |
+| `.claude/skills/audit-memory-file/` | Workflow spec: per-project audit — score, propose diff, apply, log |
+| `.claude/skills/seed-memory-file/` | Workflow spec: bootstrap a minimal AGENTS.md for projects that have none |
+| `.claude/skills/refresh-best-practices/` | Workflow spec: check the official docs for changes and update the digests |
+| `.agents/skills` (symlink) | Lets Codex load the same skills natively |
+
+Claude Code loads `.claude/skills/*` as skills; Codex loads the same files
+through the `.agents/skills` symlink. `AGENTS.md` also routes each workflow
+to its `SKILL.md` path as a fallback, so one set of workflow specs stays the
+source of truth for both tools.
 
 ## Opinions baked in
 
