@@ -43,6 +43,7 @@ gitignored — your project names stay private. The orchestrator generates
 | `best-practices/codex.md` | Digest of the official Codex AGENTS.md guidance |
 | `SCOPES.example.md` | Template for your managed-folder config |
 | `PROJECTS.example.md` | Inventory format reference |
+| `.claude/skills/refresh-best-practices/` | Skill: check the official docs for changes and update the digests |
 
 ## Opinions baked in
 

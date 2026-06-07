@@ -56,10 +56,10 @@ defeat the purpose); dated reports get a snapshot filename (`audit-YYYY-MM.md`).
 
 ## Digest refresh
 
-On "refresh best practices": re-fetch
-https://code.claude.com/docs/en/best-practices and
-https://developers.openai.com/codex/learn/best-practices, re-distill the
-digests (≤1 page each), update their `Last refreshed:` stamps.
+Use the `refresh-best-practices` skill (`.claude/skills/refresh-best-practices/`)
+to check the official docs for changes and update the digests on approval.
+Run it when asked, or when digests are more than a month old before a large
+audit.
 
 ## Out of scope
 
